@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+</head>
+<body>
+    <div id="timer"></div>
+
+    <script>
+        // Initialize the start date (this is the date from when you want to calculate elapsed time)
+        const startDate = new Date('2024-01-01T00:00:00'); // Example start date, change it as needed
+
+        // Function to update the elapsed time
+        function updateTimeElapsed() {
+            const now = new Date();
+            const timeDifference = now - startDate;
+
+            // Calculate days, hours, minutes, and seconds
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+            // Display result on the page
+            document.getElementById('timer').innerHTML = `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+        }
+
+        // Update the timer every second
+        setInterval(updateTimeElapsed, 1000);
+    </script>
+
+</body>
+</html>
